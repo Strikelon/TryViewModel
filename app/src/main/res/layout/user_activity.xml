@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <!-- здесь описывается переменная, ссылается на нашу ViewModel -->
+        <variable name="viewModel" type="ru.geekbrains.android.arch.mvvm.viewmodel.UserViewModel" />
+        <import type="java.lang.Integer" />
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- текстовое поле подписывается на обозреваемое поле user у ViewModel
+        и отображает конкретное поле объекта данных -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.user.id)}"/>
+
+
+        <!-- текстовое поле подписывается на обозреваемое поле user у ViewModel
+        и отображает конкретное поле объекта данных -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.user.name}"/>
+
+        <!-- текстовое поле подписывается на обозреваемое поле user у ViewModel
+        и отображает конкретное поле объекта данных -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.user.username}"/>
+
+        <!-- текстовое поле подписывается на обозреваемое поле user у ViewModel
+        и отображает конкретное поле объекта данных -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.user.city}"/>
+
+        <!-- текстовое поле подписывается на обозреваемое поле user у ViewModel
+        и отображает конкретное поле объекта данных -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.user.email}"/>
+
+        <!-- текстовое поле подписывается на обозреваемое поле user у ViewModel
+        и отображает конкретное поле объекта данных -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.user.phone}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{TextUtils.isEmpty(viewModel.result) ? View.GONE : View.VISIBLE}"
+            android:text="@{viewModel.result}"/>
+
+        <!-- текстовое поле подписывается на обозреваемое поле error у ViewModel
+        и выставляет свою видимость в зависимости от значения поля
+        в XML можно писать довольно сложный код, но лучше этого избегать -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{TextUtils.isEmpty(viewModel.error) ? View.GONE : View.VISIBLE}"
+            android:text="@{viewModel.error}"/>
+
+        <!-- клик по кнопке связывается с методом ViewModel -->
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onUserAction()}"
+            android:text="Button" />
+
+    </LinearLayout>
+
+</layout>
