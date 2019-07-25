@@ -13,6 +13,7 @@ import ru.geekbrains.android.arch.mvvm.viewmodel.UserViewModel;
 
 public class UserActivity extends FragmentActivity {
 
+    //testcoment
     UserViewModel viewModel;
 
     @Override
